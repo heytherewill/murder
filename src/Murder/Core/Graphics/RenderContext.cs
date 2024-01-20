@@ -456,6 +456,8 @@ public class RenderContext : IDisposable
                 Color.White, Game.Data.ShaderSimple, BlendState.AlphaBlend, false);
         }
 
+        BeforeScreenRender();
+
         // =======================================================>
         // Time to draw this game to the screen!!
         // =======================================================>
@@ -512,6 +514,14 @@ public class RenderContext : IDisposable
         }
 
         Camera.Unlock();
+    }
+
+    /// <summary>
+    /// Last chance to render anything before the contents are drawn on the screen!
+    /// </summary>
+    protected virtual void BeforeScreenRender()
+    {
+        
     }
 
     protected void TakeScreenshotIfNecessary(RenderTarget2D target)
