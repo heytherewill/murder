@@ -392,6 +392,8 @@ public class RenderContext : IDisposable
         }
         gameShader ??= Game.Data.ShaderSimple;
 
+        MainTargetReady();
+
         _graphicsDevice.SetRenderTarget(_tempTarget);
         _graphicsDevice.Clear(BackColor);
         RenderServices.DrawTextureQuad(_mainTarget,     // <=== Draws the game buffer to a temp buffer with the fancy shader
@@ -523,6 +525,9 @@ public class RenderContext : IDisposable
     {
         
     }
+
+    protected virtual void MainTargetReady() { }
+
 
     protected void TakeScreenshotIfNecessary(RenderTarget2D target)
     {
